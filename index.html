@@ -1,0 +1,249 @@
+<meta name="viewport" content="width=600">
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="keydown.min.js"></script>
+<script>
+var lala=-600;
+var d1=($(window).width()/2)-Math.floor(Math.random() * 100) - 200;
+var d2=-150;
+
+var d3=($(window).width()/2)-Math.floor(Math.random() * 100) + 150;
+var d4=-350;
+var qq=1000;
+var ra;
+var mo;
+
+var autoa;
+var autob=-350;
+var x=1000;
+
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+
+function ruch(y){
+
+
+
+$("#droga").css("margin-top",lala);
+$("#de1").css("margin-top",d2);
+$("#de1").css("margin-left",d1);
+
+$("#de2").css("margin-top",d4);
+$("#de2").css("margin-left",d3);
+
+
+$("#a1").css("margin-top",autob);
+$("#a1").css("margin-left",autoa);
+
+lala=lala+10;
+d2=d2+10;
+autob=autob+5;
+d4=d4+10;
+if(lala>-400){
+
+lala=-600;
+
+}
+
+
+if(d2>400){
+
+d2=-200;
+d1=($(window).width()/2)-Math.floor(Math.random() * 50) - 200;
+}
+
+if(d4>400){
+
+d4=-250;
+d3=($(window).width()/2)-Math.floor(Math.random() * 50) + 150;
+}
+
+
+if(autob>400){
+mo=Math.floor(Math.random() * 6)+1;
+$("#a1").attr("src","a"+mo+".png");
+autob=0-($(window).width()/2)-Math.floor(Math.random() * 200) + 150;
+ra=Math.floor(Math.random() * 2)+1;
+if(ra==1){
+autoa=($(window).width()/2)-Math.floor(Math.random() * 50) + 30;
+}
+
+if(ra==2){
+autoa=($(window).width()/2)-Math.floor(Math.random() * 50) - 50;
+}
+
+}
+
+}
+
+
+function gaz(x){
+
+setTimeout(ruch, x);
+
+}
+</script>
+
+
+
+<img class="centro" src="tlo.png" style="margin-top:400;position:absolute;z-index:2;"><img class="centro" id="droga" src="droga.png" style="margin-top:-600;position:absolute;z-index:-1">
+<img src="drzewko.png" style="position:absolute;z-index:1;" class="centro2" id="de1">
+<img src="drzewko.png" style="position:absolute;z-index:1;" class="centro2" id="de2">
+<img src="auto.png" style="position:absolute;z-index:1;margin-top:230;"  id="auto" height="200">
+<img src="a1.png" style="position:absolute;z-index:1;"  id="a1" width="80">
+<br>
+<center><div style="margin-top:420;z-index:5;position:absolute;" class="centro3">
+<input type="button" id="lewo" value="<-" style="width:150;height:150;">
+<input type="button" id="srodek" value="^" style="width:150;height:150;" onclick="setInterval(ruch,'18');">
+<input type="button" id="prawo" value="->"  style="width:150;height:150;">
+
+</div>
+<script>
+
+
+$(window).on('resize', function()
+		{
+		var centro=($(window).width()/2)-270;
+		var centro2=($(window).width()/2)-40;
+		
+		var centro3=($(window).width()/2)-225;
+			 
+			 
+			 $('.centro').css('margin-left', centro + "px");
+			 $('.centro3').css('margin-left', centro3 + "px");
+			 $('#auto').css('margin-left', centro2 + "px");
+			 
+			  			 
+
+		}).resize();
+		
+		
+		
+		kd.run(function () {
+  kd.tick();
+});
+		
+	kd.D.down(function () {
+ // alert("p");
+var marginTop;
+var ttt; 
+marginTop=$("#auto").css("margin-left").replace('px', '');
+//marginTop.charAt(4)=9;
+
+ttt=parseInt(marginTop);
+var centros=($(window).width()/2)-10;
+if(ttt>centros){
+
+}else{
+ttt=ttt+5;
+}
+//alert(ttt);
+$("#auto").css("margin-left",ttt);
+
+
+});	
+
+
+		
+	kd.A.down(function () {
+ // alert("p");
+var marginTop;
+var ttt; 
+marginTop=$("#auto").css("margin-left").replace('px', '');
+//marginTop.charAt(4)=9;
+
+ttt=parseInt(marginTop);
+var centros=($(window).width()/2)-150;
+if(ttt<centros){
+
+}else{
+ttt=ttt-5;
+}
+//alert(ttt);
+$("#auto").css("margin-left",ttt);
+
+
+});	
+var kolo;
+
+$(window).keydown(function(event){
+if(event.keyCode==87){
+x=x-100;
+clearInterval(kolo);
+	kolo=setInterval(ruch,x);
+}
+});
+
+$(window).keydown(function(event){
+if(event.keyCode==83){
+x=x+100;
+clearInterval(kolo);
+	kolo=setInterval(ruch,x);
+}
+});
+$(document).ready(function() {
+  
+  var i = 0, timeOut = 0;
+  
+  $('#prawo').on('mousedown touchstart', function(e) {
+   
+    timeOut = setInterval(function(){
+       // alert("p");
+var marginTop;
+var ttt; 
+marginTop=$("#auto").css("margin-left").replace('px', '');
+//marginTop.charAt(4)=9;
+
+ttt=parseInt(marginTop);
+var centros=($(window).width()/2)-10;
+if(ttt>centros){
+
+}else{
+ttt=ttt+5;
+}
+//alert(ttt);
+$("#auto").css("margin-left",ttt);
+
+    }, 25);
+  }).bind('mouseup mouseleave touchend', function() {
+    $(this).removeClass('active');
+    clearInterval(timeOut);
+  });
+  
+});
+
+$(document).ready(function() {
+  
+  var i = 0, timeOut = 0;
+  
+  $('#lewo').on('mousedown touchstart', function(e) {
+   
+    timeOut = setInterval(function(){
+     var marginTop;
+var ttt; 
+marginTop=$("#auto").css("margin-left").replace('px', '');
+//marginTop.charAt(4)=9;
+
+ttt=parseInt(marginTop);
+var centros=($(window).width()/2)-150;
+if(ttt<centros){
+
+}else{
+ttt=ttt-5;
+}
+//alert(ttt);
+$("#auto").css("margin-left",ttt);
+    }, 25);
+  }).bind('mouseup mouseleave touchend', function() {
+    $(this).removeClass('active');
+    clearInterval(timeOut);
+  });
+  
+});
+
+</script>
+
