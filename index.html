@@ -15,6 +15,18 @@ var mo;
 var autoa;
 var autob=-350;
 var x=1000;
+var meter=0;
+
+var axt;
+var ayt;
+var bxt;
+var byt;
+
+var axb;
+var ayb;
+var bxb;
+var byb;
+var cmeter=0;
 
 function sleep(milliseconds) {
   const date = Date.now();
@@ -48,6 +60,26 @@ if(lala>-400){
 lala=-600;
 
 }
+axt=parseInt($("#auto").css("margin-left").replace("px", ""));
+ayt=parseInt($("#auto").css("margin-top").replace("px", ""));
+axb=parseInt($("#auto").css("margin-left").replace("px", ""))+parseInt($("#auto").width());
+ayb=parseInt($("#auto").css("margin-top").replace("px", ""))+parseInt($("#auto").height());
+
+
+
+bxt=parseInt($("#a1").css("margin-left").replace("px", ""));
+byt=parseInt($("#a1").css("margin-top").replace("px", ""));
+bxb=parseInt($("#a1").css("margin-left").replace("px", ""))+parseInt($("#auto").width());
+byb=parseInt($("#a1").css("margin-top").replace("px", ""))+parseInt($("#auto").height());
+//if($("#auto").css("margin-left")==1){}
+
+if(axt<bxt && axb<bxb && 430<byb && 230 < byt){
+//alert('www');
+cmeter++;
+$("#crash").html(cmeter);
+}
+
+//$("#crash").html(axt +" < "+bxt +" | "+axb+" > "+bxb +" | "+ayb +" > "+byb +" "+ayt +" < "+byt +" ");
 
 
 if(d2>400){
@@ -77,7 +109,8 @@ autoa=($(window).width()/2)-Math.floor(Math.random() * 50) - 50;
 }
 
 }
-
+meter++;
+$("#meter").html(meter);
 }
 
 
@@ -86,19 +119,27 @@ function gaz(x){
 setTimeout(ruch, x);
 
 }
+
+setInterval(ruch,'18')
 </script>
 
 
 
 <img class="centro" src="tlo.png" style="margin-top:400;position:absolute;z-index:2;"><img class="centro" id="droga" src="droga.png" style="margin-top:-600;position:absolute;z-index:-1">
+
+
+<span style="position:absolute;z-index:666;margin-top:400;">meta-meter: <span id="meter"></span></span>
+<span style="position:absolute;z-index:666;margin-top:410;">crash-meter: <span id="crash"></span></span>
+
+
 <img src="drzewko.png" style="position:absolute;z-index:1;" class="centro2" id="de1">
 <img src="drzewko.png" style="position:absolute;z-index:1;" class="centro2" id="de2">
 <img src="auto.png" style="position:absolute;z-index:1;margin-top:230;"  id="auto" height="200">
 <img src="a1.png" style="position:absolute;z-index:1;"  id="a1" width="80">
 <br>
-<center><div style="margin-top:420;z-index:5;position:absolute;" class="centro3">
+<center><div style="margin-top:420;z-index:5;position:absolute;" class="centro3"><center>
 <input type="button" id="lewo" value="<-" style="width:150;height:150;">
-<input type="button" id="srodek" value="^" style="width:150;height:150;" onclick="setInterval(ruch,'18');">
+<!--input type="button" id="srodek" value="^" style="width:150;height:150;" onclick=";"-->
 <input type="button" id="prawo" value="->"  style="width:150;height:150;">
 
 </div>
@@ -110,7 +151,7 @@ $(window).on('resize', function()
 		var centro=($(window).width()/2)-270;
 		var centro2=($(window).width()/2)-40;
 		
-		var centro3=($(window).width()/2)-225;
+		var centro3=($(window).width()/2)-150;
 			 
 			 
 			 $('.centro').css('margin-left', centro + "px");
