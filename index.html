@@ -71,9 +71,11 @@ bxt=parseInt($("#a1").css("margin-left").replace("px", ""));
 byt=parseInt($("#a1").css("margin-top").replace("px", ""));
 bxb=parseInt($("#a1").css("margin-left").replace("px", ""))+parseInt($("#auto").width());
 byb=parseInt($("#a1").css("margin-top").replace("px", ""))+parseInt($("#auto").height());
+
+var bxb2=parseInt($("#a1").css("margin-left").replace("px", ""))+parseInt($("#a1").width());
 //if($("#auto").css("margin-left")==1){}
 
-if(axt<bxt && axb<bxb && 430<byb && 230 < byt){
+if(axt<bxt && axb<bxb && 430<byb && 230 < byt && axb > bxb2){
 //alert('www');
 cmeter++;
 $("#crash").html(cmeter);
