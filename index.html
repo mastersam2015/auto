@@ -1,4 +1,6 @@
+
 <meta name="viewport" content="width=600">
+
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="keydown.min.js"></script>
 <script>
@@ -233,7 +235,7 @@ $(document).ready(function() {
   var i = 0, timeOut = 0;
   
   $('#prawo').on('mousedown touchstart', function(e) {
-   
+   e.preventDefault();
     timeOut = setInterval(function(){
        // alert("p");
 var marginTop;
@@ -252,7 +254,7 @@ ttt=ttt+5;
 $("#auto").css("margin-left",ttt);
 
     }, 25);
-  }).bind('mouseup mouseleave touchend', function() {
+  }).on('mouseup mouseleave touchend touchcancel', function() {
     $(this).removeClass('active');
     clearInterval(timeOut);
   });
@@ -264,7 +266,7 @@ $(document).ready(function() {
   var i = 0, timeOut = 0;
   
   $('#lewo').on('mousedown touchstart', function(e) {
-   
+   e.preventDefault();
     timeOut = setInterval(function(){
      var marginTop;
 var ttt; 
@@ -281,7 +283,7 @@ ttt=ttt-5;
 //alert(ttt);
 $("#auto").css("margin-left",ttt);
     }, 25);
-  }).bind('mouseup mouseleave touchend', function() {
+  }).on('mouseup mouseleave touchend touchcancel', function() {
     $(this).removeClass('active');
     clearInterval(timeOut);
   });
